@@ -18,9 +18,11 @@ import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.common.collect.ImmutableMap;
 
 import java.io.File;
@@ -38,7 +40,11 @@ import java.util.TimerTask;
 import nl.bravobit.ffmpeg.ExecuteBinaryResponseHandler;
 import nl.bravobit.ffmpeg.FFmpeg;
 import nl.bravobit.ffmpeg.exceptions.FFmpegCommandAlreadyRunningException;
-
+/**
+ * @author NohGyuSeon
+ * @Date 2023.01.06
+ * @version 11.0, OSSP
+ */
 public class MainActivity extends AppCompatActivity
 {
     private final static String TAG = "BabySleepSounds";
@@ -109,6 +115,48 @@ public class MainActivity extends AppCompatActivity
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         soundSpinner.setAdapter(dataAdapter);
 
+        // show gif image
+        soundSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            ImageView gif_img = (ImageView) findViewById(R.id.imageView);
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+
+                if (position == 0) {
+                    Glide.with(view).load(R.raw.gif_campfire).into(gif_img);
+                } else if (position == 1) {
+                    Glide.with(view).load(R.raw.gif_dryer).into(gif_img);
+                } else if (position == 2) {
+                    Glide.with(view).load(R.raw.gif_fan).into(gif_img);
+                } else if (position == 3) {
+                    Glide.with(view).load(R.raw.gif_ocean).into(gif_img);
+                } else if (position == 4) {
+                    Glide.with(view).load(R.raw.gif_rain).into(gif_img);
+                } else if (position == 5) {
+                    Glide.with(view).load(R.raw.gif_refrigerator).into(gif_img);
+                } else if (position == 6) {
+                    Glide.with(view).load(R.raw.gif_shhh).into(gif_img);
+                } else if (position == 7) {
+                    Glide.with(view).load(R.raw.gif_shower).into(gif_img);
+                } else if (position == 8) {
+                    Glide.with(view).load(R.raw.gif_stream).into(gif_img);
+                } else if (position == 9) {
+                    Glide.with(view).load(R.raw.gif_vacuum).into(gif_img);
+                } else if (position == 10) {
+                    Glide.with(view).load(R.raw.gif_water).into(gif_img);
+                } else if (position == 11) {
+                    Glide.with(view).load(R.raw.gif_waterfall).into(gif_img);
+                } else if (position == 12) {
+                    Glide.with(view).load(R.raw.gif_waves).into(gif_img);
+                } else if (position == 13) {
+                    Glide.with(view).load(R.raw.gif_whitenoise).into(gif_img);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Glide.with(adapterView).load(R.raw.gif_campfire).into(gif_img);
+            }
+        });
 
         final Spinner sleepTimeoutSpinner = findViewById(R.id.sleepTimerSpinner);
         List<String> times = new ArrayList<>(_timeMap.keySet());
