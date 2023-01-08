@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -28,6 +29,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.google.common.collect.ImmutableMap;
 
 import java.io.File;
@@ -69,7 +72,10 @@ public class MainActivity extends AppCompatActivity
     // 타이머 구현 변수 선언부
     int hour, minute, second;
 
-    TextView hourTV, minuteTV, secondTV, finishTV;
+    TextView hourTV, minuteTV, secondTV;
+    TextView msgView;
+
+    LinearLayout timeCountLV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -84,6 +90,9 @@ public class MainActivity extends AppCompatActivity
         hourTV = (TextView)findViewById(R.id.hourTV);
         minuteTV = (TextView)findViewById(R.id.minuteTV);
         secondTV = (TextView)findViewById(R.id.secondTV);
+
+        msgView = (TextView)findViewById(R.id.msgView);
+        timeCountLV = (LinearLayout)findViewById(R.id.timeCountLV);
 
         // These sound files by convention are:
         // - take a ~10 second clip
@@ -128,6 +137,19 @@ public class MainActivity extends AppCompatActivity
                 android.R.layout.simple_spinner_item, names);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         soundSpinner.setAdapter(dataAdapter);
+
+        // Add NohGyuSeon
+        // Timer imagebutton click animation
+        ImageButton imageButton = findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                YoYo.with(Techniques.FadeIn)
+                        .duration(700)
+                        .repeat(1)
+                        .playOn(findViewById(R.id.timeCountLV));
+            }
+        });
 
         // Add NohGyuSeon
         // Show gif image
@@ -444,6 +466,7 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void run() {
                     // 반복실행할 구문
+                    msgView.setText("");
 
                     // 0초 이상이면
                     if (second != 0) {
@@ -487,10 +510,10 @@ public class MainActivity extends AppCompatActivity
                         hourTV.setText(Integer.toString(hour));
                     }
 
-                    // 시분초가 다 0이라면 Toast를 띄우고 타이머를 종료한다.
+                    // 시분초가 모두 0이 될 시 타이머를 종료하고, 메시지를 보여준다.
                     if (hour == 0 && minute == 0 && second == 0) {
+                        msgView.setText("타이머가 종료되었습니다.");
                         stopPlayback();
-
                     }
                 }
             };

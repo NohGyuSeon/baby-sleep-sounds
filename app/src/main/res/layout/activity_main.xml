@@ -100,12 +100,12 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="0dp"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.892"
@@ -117,7 +117,6 @@
             android:layout_height="27dp"
             android:layout_marginHorizontal="30dp"
             android:orientation="horizontal"
-            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -187,23 +186,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="191dp"
-            android:layout_height="27dp"
-            android:layout_marginHorizontal="30dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:text="타이머가 종료되었습니다."
-            android:textColor="@color/colorPrimary"
-            android:typeface="serif"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.173" />
-
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="40dp"
@@ -211,10 +193,26 @@
             android:background="@drawable/stopwatch"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.771"
+            app:layout_constraintVertical_bias="0.822"
             app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/msgView"
+        android:layout_width="191dp"
+        android:layout_height="27dp"
+        android:layout_marginHorizontal="30dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:textColor="@color/colorPrimary"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.714" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

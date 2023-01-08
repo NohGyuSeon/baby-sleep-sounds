@@ -43,6 +43,8 @@ dependencies {
     // as gif
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    // as android view animations
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'
 }
 
 spotbugs {
