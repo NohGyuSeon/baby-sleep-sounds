@@ -17,7 +17,9 @@
     <string name="time_1hour">1 Hour</string>
     <string name="time_2hour">2 Hours</string>
     <string name="time_4hour">4 Hours</string>
+    <string name="time_6hour">6 Hours</string>
     <string name="time_8hour">8 Hours</string>
+    <string name="time_10hour">10 Hours</string>
 
     <string name="campfire">Campfire</string>
     <string name="dryer">Dryer</string>

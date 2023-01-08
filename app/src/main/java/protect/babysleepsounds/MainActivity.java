@@ -10,6 +10,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,8 +20,11 @@ import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -61,6 +66,11 @@ public class MainActivity extends AppCompatActivity
     private FFmpeg _ffmpeg;
     private ProgressDialog _encodingProgress;
 
+    // 타이머 구현 변수 선언부
+    int hour, minute, second;
+
+    TextView hourTV, minuteTV, secondTV, finishTV;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -70,6 +80,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        hourTV = (TextView)findViewById(R.id.hourTV);
+        minuteTV = (TextView)findViewById(R.id.minuteTV);
+        secondTV = (TextView)findViewById(R.id.secondTV);
 
         // These sound files by convention are:
         // - take a ~10 second clip
@@ -115,7 +129,8 @@ public class MainActivity extends AppCompatActivity
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         soundSpinner.setAdapter(dataAdapter);
 
-        // show gif image
+        // Add NohGyuSeon
+        // Show gif image
         soundSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             ImageView gif_img = (ImageView) findViewById(R.id.imageView);
             @Override
@@ -158,6 +173,8 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        // Modify NohGyuSeon
+        // Set textview value to selected time
         final Spinner sleepTimeoutSpinner = findViewById(R.id.sleepTimerSpinner);
         List<String> times = new ArrayList<>(_timeMap.keySet());
         sleepTimeoutSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
@@ -170,6 +187,25 @@ public class MainActivity extends AppCompatActivity
                     updatePlayTimeout();
                     Toast.makeText(MainActivity.this, R.string.sleepTimerUpdated, Toast.LENGTH_LONG).show();
                 }
+
+                if (position == 1) {
+                    timeSet("000100");
+                } else if (position == 2) {
+                    timeSet("000500");
+                } else if (position == 3) {
+                    timeSet("001000");
+                } else if (position == 4) {
+                    timeSet("003000");
+                } else if (position == 5) {
+                    timeSet("010000");
+                } else if (position == 6) {
+                    timeSet("020000");
+                } else if (position == 7) {
+                    timeSet("040000");
+                } else if (position == 8) {
+                    timeSet("080000");
+                }
+
             }
 
             @Override
@@ -216,6 +252,22 @@ public class MainActivity extends AppCompatActivity
             reportPlaybackUnsupported();
         }
 
+    }
+
+    // 선언 및 초기화
+    private void timeSet(String str) {
+
+        String getHour = str.substring(0, 2);
+        String getMin = str.substring(2, 4);
+        String getSecond = str.substring(4, 6);
+
+        hourTV.setText(getHour);
+        minuteTV.setText(getMin);
+        secondTV.setText(getSecond);
+
+        hour = Integer.parseInt(getHour);
+        minute = Integer.parseInt(getMin);
+        second = Integer.parseInt(getSecond);
     }
 
     /**
@@ -376,29 +428,75 @@ public class MainActivity extends AppCompatActivity
     /**
      * Update the timeout for playback to stop
      */
-    private void updatePlayTimeout()
-    {
+    private void updatePlayTimeout() {
         // Cancel the running timer
-        if(_timer != null)
-        {
+        if (_timer != null) {
             _timer.cancel();
             _timer.purge();
         }
 
         final Spinner sleepTimeoutSpinner = findViewById(R.id.sleepTimerSpinner);
-        String selectedTimeout = (String)sleepTimeoutSpinner.getSelectedItem();
+        String selectedTimeout = (String) sleepTimeoutSpinner.getSelectedItem();
         int timeoutMs = _timeMap.get(selectedTimeout);
-        if(timeoutMs > 0)
-        {
+        if (timeoutMs > 0) {
             _timer = new Timer();
-            _timer.schedule(new TimerTask()
-            {
+            TimerTask timerTask = new TimerTask() {
                 @Override
-                public void run()
-                {
-                    stopPlayback();
+                public void run() {
+                    // 반복실행할 구문
+
+                    // 0초 이상이면
+                    if (second != 0) {
+                        //1초씩 감소
+                        second--;
+
+                        // 0분 이상이면
+                    } else if (minute != 0) {
+                        // 1분 = 60초
+                        second = 60;
+                        second--;
+                        minute--;
+
+                        // 0시간 이상이면
+                    } else if (hour != 0) {
+                        // 1시간 = 60분
+                        second = 60;
+                        minute = 60;
+                        second--;
+                        minute--;
+                        hour--;
+                    }
+
+                    // 시, 분, 초가 10이하(한자리수) 라면
+                    // 숫자 앞에 0을 붙인다 ( 8 -> 08 )
+                    if (second <= 9) {
+                        secondTV.setText("0" + second);
+                    } else {
+                        secondTV.setText(Integer.toString(second));
+                    }
+
+                    if (minute <= 9) {
+                        minuteTV.setText("0" + minute);
+                    } else {
+                        minuteTV.setText(Integer.toString(minute));
+                    }
+
+                    if (hour <= 9) {
+                        hourTV.setText("0" + hour);
+                    } else {
+                        hourTV.setText(Integer.toString(hour));
+                    }
+
+                    // 시분초가 다 0이라면 Toast를 띄우고 타이머를 종료한다.
+                    if (hour == 0 && minute == 0 && second == 0) {
+                        stopPlayback();
+
+                    }
                 }
-            }, (long)timeoutMs);
+            };
+
+            // 타이머를 실행
+            _timer.schedule(timerTask, 0, 1000); // Timer 실행
         }
     }
 
