@@ -13,9 +13,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -207,7 +210,8 @@ public class MainActivity extends AppCompatActivity
                 if(_playing)
                 {
                     updatePlayTimeout();
-                    Toast.makeText(MainActivity.this, R.string.sleepTimerUpdated, Toast.LENGTH_LONG).show();
+//                    Toast.makeText(MainActivity.this, R.string.sleepTimerUpdated, Toast.LENGTH_LONG).show();
+                    showToast(getResources().getString(R.string.sleepTimerUpdated));
                 }
 
                 if (position == 1) {
@@ -276,6 +280,21 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    private void showToast(String str) {
+        LayoutInflater inflater = getLayoutInflater();
+
+        View layout = inflater.inflate(R.layout.toastborder, (ViewGroup) findViewById(R.id.toast_layout));
+
+        TextView Toasttext = layout.findViewById(R.id.text);
+
+        Toast toast = new Toast(this);
+        Toasttext.setText(str);
+        toast.setGravity(Gravity.CENTER, 0, -300);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
+    }
+
     // 선언 및 초기화
     private void timeSet(String str) {
 
@@ -297,7 +316,8 @@ public class MainActivity extends AppCompatActivity
      */
     private void reportPlaybackUnsupported()
     {
-        Toast.makeText(this, R.string.playbackNotSupported, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, R.string.playbackNotSupported, Toast.LENGTH_LONG).show();
+        showToast(getResources().getString(R.string.playbackNotSupported));
     }
 
     private void startPlayback()
@@ -444,7 +464,8 @@ public class MainActivity extends AppCompatActivity
             _encodingProgress = null;
         }
 
-        Toast.makeText(this, R.string.playbackFailure, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, R.string.playbackFailure, Toast.LENGTH_LONG).show();
+        showToast(getResources().getString(R.string.playbackFailure));
     }
 
     /**

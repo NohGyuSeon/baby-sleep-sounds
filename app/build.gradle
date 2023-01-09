@@ -45,6 +45,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     // as android view animations
     implementation 'com.daimajia.androidanimations:library:2.4@aar'
+    // as android textview (shimmer-android)
+    compile 'com.romainpiel.shimmer:library:1.4.0@aar'
 }
 
 spotbugs {

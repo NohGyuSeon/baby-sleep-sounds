@@ -10,7 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/gradient_drawable"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,13 +78,17 @@
         app:layout_constraintBottom_toBottomOf="@id/sleep_timer_label"
         android:drawSelectorOnTop="true" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="20.0dp"
+        android:background="@drawable/gradient_drawable"
         android:enabled="false"
         android:text="@string/play"
+        android:textColor="#FFFFFF"
+        android:typeface="serif"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -188,7 +192,7 @@
 
         <ImageButton
             android:id="@+id/imageButton"
-            android:layout_width="40dp"
+            android:layout_width="35dp"
             android:layout_height="30dp"
             android:background="@drawable/stopwatch"
             app:layout_constraintBottom_toBottomOf="parent"
