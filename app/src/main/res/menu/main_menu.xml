@@ -1,13 +1,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/action_view"
+        android:title="@string/view"
+        android:icon="@drawable/playing_notification"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/action_settings"
         android:title="@string/settings"
         android:icon="@drawable/ic_settings"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_about"
         android:title="@string/about"
+        android:icon="@drawable/ic_launcher"
         app:showAsAction="never"/>
+
 </menu>
