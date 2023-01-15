@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), VideoActivity.class));
-                Toasty.info(getApplication(), R.string.playVideo, Toast.LENGTH_SHORT, true).show();
+                Toasty.info(getApplication(), R.string.startVideo, Toast.LENGTH_SHORT, true).show();
             }
         });
 

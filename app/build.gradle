@@ -49,6 +49,9 @@ dependencies {
     compile 'com.romainpiel.shimmer:library:1.4.0@aar'
     // as toast
     implementation 'com.github.GrenderG:Toasty:1.5.2'
+    // as YouTube
+    implementation files('libs\\YouTubeAndroidPlayerApi.jar')
+    implementation files('libs\\google_http_client_jackson2-1.0.1.jar ')
 }
 
 spotbugs {

@@ -6,6 +6,7 @@
     <string name="play">Play</string>
     <string name="stop">Stop</string>
     <string name="ok">OK</string>
+    <string name="back">Back</string>
 
     <string name="sleepTimer">Sleep Timer</string>
     <string name="disabled">Disabled</string>
@@ -42,7 +43,13 @@
     <string name="playbackNotSupported">Playback now supported, see logs for details</string>
     <string name="playbackFailure">Unable to play file, see logs for details</string>
     <string name="sleepTimerUpdated">Updated sleep timer</string>
-    <string name="playVideo">Play video animation</string>
+    <string name="startVideo">Start video animation</string>
+    <string name="stopVideo">Stop video animation</string>
+    <string name="updateVideo">Update video animation</string>
+
+    <string name="Funky_Veggies">Start Funky_Veggies!</string>
+    <string name="Super_Simple_Songs">Start Super_Simple_Songs!</string>
+    <string name="Lellobee">Start Lellobee!</string>
 
     <string name="theme">Theme</string>
 
