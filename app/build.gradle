@@ -47,6 +47,8 @@ dependencies {
     implementation 'com.daimajia.androidanimations:library:2.4@aar'
     // as android textview (shimmer-android)
     compile 'com.romainpiel.shimmer:library:1.4.0@aar'
+    // as toast
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
 }
 
 spotbugs {

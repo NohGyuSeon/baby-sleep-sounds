@@ -48,6 +48,7 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import es.dmoral.toasty.Toasty;
 import nl.bravobit.ffmpeg.ExecuteBinaryResponseHandler;
 import nl.bravobit.ffmpeg.FFmpeg;
 import nl.bravobit.ffmpeg.exceptions.FFmpegCommandAlreadyRunningException;
@@ -155,6 +156,17 @@ public class MainActivity extends AppCompatActivity
         });
 
         // Add NohGyuSeon
+        // Video imagebutton click event
+        ImageButton imageButton2 = findViewById(R.id.imageButton2);
+        imageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), VideoActivity.class));
+                Toasty.info(getApplication(), R.string.playVideo, Toast.LENGTH_SHORT, true).show();
+            }
+        });
+
+        // Add NohGyuSeon
         // Show gif image
         soundSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             ImageView gif_img = (ImageView) findViewById(R.id.imageView);
@@ -210,8 +222,7 @@ public class MainActivity extends AppCompatActivity
                 if(_playing)
                 {
                     updatePlayTimeout();
-//                    Toast.makeText(MainActivity.this, R.string.sleepTimerUpdated, Toast.LENGTH_LONG).show();
-                    showToast(getResources().getString(R.string.sleepTimerUpdated));
+                    Toasty.success(getApplication(), R.string.sleepTimerUpdated, Toast.LENGTH_SHORT, true).show();
                 }
 
                 if (position == 1) {
@@ -280,7 +291,8 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void showToast(String str) {
+    // Use the Toasty library instead of these
+/*    private void showToast(String str) {
         LayoutInflater inflater = getLayoutInflater();
 
         View layout = inflater.inflate(R.layout.toastborder, (ViewGroup) findViewById(R.id.toast_layout));
@@ -293,7 +305,7 @@ public class MainActivity extends AppCompatActivity
         toast.setDuration(Toast.LENGTH_SHORT);
         toast.setView(layout);
         toast.show();
-    }
+    }*/
 
     // 선언 및 초기화
     private void timeSet(String str) {
@@ -316,8 +328,8 @@ public class MainActivity extends AppCompatActivity
      */
     private void reportPlaybackUnsupported()
     {
-//        Toast.makeText(this, R.string.playbackNotSupported, Toast.LENGTH_LONG).show();
-        showToast(getResources().getString(R.string.playbackNotSupported));
+        Toasty.warning(getApplication(), R.string.playbackNotSupported, Toast.LENGTH_SHORT, true).show();
+
     }
 
     private void startPlayback()
@@ -464,8 +476,7 @@ public class MainActivity extends AppCompatActivity
             _encodingProgress = null;
         }
 
-//        Toast.makeText(this, R.string.playbackFailure, Toast.LENGTH_LONG).show();
-        showToast(getResources().getString(R.string.playbackFailure));
+        Toasty.warning(getApplication(), R.string.playbackFailure, Toast.LENGTH_SHORT, true).show();
     }
 
     /**
@@ -649,6 +660,11 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.action_about)
         {
             displayAboutDialog();
+            return true;
+        }
+        else if (id == R.id.action_view)
+        {
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 

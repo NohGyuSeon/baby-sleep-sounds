@@ -42,6 +42,7 @@
     <string name="playbackNotSupported">Playback now supported, see logs for details</string>
     <string name="playbackFailure">Unable to play file, see logs for details</string>
     <string name="sleepTimerUpdated">Updated sleep timer</string>
+    <string name="playVideo">Play video animation</string>
 
     <string name="theme">Theme</string>
 
