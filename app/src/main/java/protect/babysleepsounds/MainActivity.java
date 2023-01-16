@@ -54,8 +54,10 @@ import nl.bravobit.ffmpeg.FFmpeg;
 import nl.bravobit.ffmpeg.exceptions.FFmpegCommandAlreadyRunningException;
 /**
  * @author NohGyuSeon
- * @Date 2023.01.06
- * @version 11.0, OSSP
+ * @deprecated Android doesn't support under about API 30
+ * @see "https://github.com/NohGyuSeon/baby-sleep-sounds"
+ * @since release 2023 ~
+ * @version 11.0, 2023.01.06
  */
 public class MainActivity extends AppCompatActivity
 {

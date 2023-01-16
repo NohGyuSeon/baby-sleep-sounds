@@ -25,9 +25,9 @@ public class VideoActivity extends YouTubeBaseActivity {
 
     // API_KEY enclosed, it is from "do it android"
     private static String API_KEY = "AIzaSyDdSkoPeRAC0LKicMbl68yVDwyLhPey2nc";
-    private static String videoId1 = "PunVHiOxUEk";
-    private static String videoId2 = "vcKxZLQETgE";
-    private static String videoId3 = "wr8LX3tsbLQ";
+    private static String videoId1 = "vcKxZLQETgE";
+    private static String videoId2 = "wr8LX3tsbLQ";
+    private static String videoId3 = "PunVHiOxUEk";
     private static String videoId;
 
     // video index

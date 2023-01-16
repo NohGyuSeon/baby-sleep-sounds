@@ -1,0 +1,73 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_name">아기 수면 소리</string>
+    <string name="description">소리를 선택하고 클릭하여 실행</string>
+    <string name="sound">소리</string>
+    <string name="play">실행</string>
+    <string name="stop">정지</string>
+    <string name="ok">확인</string>
+    <string name="back">돌아가기</string>
+
+    <string name="sleepTimer">수면 타이머</string>
+    <string name="disabled">미정</string>
+    <string name="time_1minute">1분</string>
+    <string name="time_5minute">5분</string>
+    <string name="time_10minute">10분</string>
+    <string name="time_30minute">30분</string>
+    <string name="time_1hour">1시간</string>
+    <string name="time_2hour">2시간</string>
+    <string name="time_4hour">4시간</string>
+    <string name="time_8hour">8시간</string>
+
+    <string name="campfire">캠프파이어</string>
+    <string name="dryer">세탁기</string>
+    <string name="fan">선풍기</string>
+    <string name="ocean">해양</string>
+    <string name="rain">비</string>
+    <string name="refrigerator">냉장고</string>
+    <string name="shhhh">바람</string>
+    <string name="shower">샤워</string>
+    <string name="stream">시냇물</string>
+    <string name="vacuum">진공</string>
+    <string name="water">물</string>
+    <string name="waterfall">폭포</string>
+    <string name="waves">파도</string>
+    <string name="whiteNoise">백색 소음</string>
+
+    <string name="preparing">준비중&#8230;</string>
+    <string name="enableLowPassFilter">로우패스 필터</string>
+    <string name="filterCutoff">필터 끊기</string>
+    <string name="filterCutoffValue"><xliff:g id="frequency">%d</xliff:g> Hz</string>
+    <string name="playbackNotSupported">실행이 지원되지 않습니다, 로그를 확인하세요</string>
+    <string name="playbackFailure">파일을 재생할 수 없습니다, 로그를 확인하세요</string>
+    <string name="sleepTimerUpdated">수면 타이머 업데이트</string>
+    <string name="startVideo">비디오 애니메이션 실행</string>
+    <string name="stopVideo">비디오 애니메이션 중지</string>
+    <string name="updateVideo">비디오 애니메이션 업데이트</string>
+
+    <string name="Funky_Veggies">Funky_Veggies 비디오 실행!</string>
+    <string name="Super_Simple_Songs">Super_Simple_Songs 비디오 실행!</string>
+    <string name="Lellobee">Lellobee 비디오 실행!</string>
+
+    <string name="theme">테마</string>
+
+    <string name="notificationPlaying">실행중&#8230;</string>
+
+    <string name="notificationChannelName">아기 수면 소리 오디오 서비스</string>
+
+    <string name="about">정보</string>
+    <string name="view">뷰</string>
+    <string name="author">from NGS</string>
+    <string name="app_copyright_fmt">Copyright 2016-<xliff:g>%d</xliff:g> Branden Archer</string>
+    <string name="app_license">Licensed under the GPLv3.</string>
+    <string name="about_title_fmt">About <xliff:g id="app_name">%s</xliff:g></string>
+    <string name="debug_version_fmt">Version: <xliff:g id="version">%s</xliff:g></string>
+    <string name="app_revision_fmt">Revision Information: <xliff:g id="app_revision_url">%s</xliff:g></string>
+    <string name="sound_resources"><xliff:g id="app_name">%s</xliff:g> uses sound resources from: <xliff:g id="sound_sources_list">%s</xliff:g></string>
+    <string name="image_resources"><xliff:g id="app_name">%s</xliff:g> uses image resources from: <xliff:g id="sound_sources_list">%s</xliff:g></string>
+    <string name="app_libraries"><xliff:g id="app_name">%s</xliff:g> uses the following third-party libraries or programs: <xliff:g id="app_libraries_list">%s</xliff:g></string>
+    <string name="customize">커스터마이즈</string>
+    <string name="settings">설정</string>
+    <string name="theme_dark">다크테마</string>
+    <string name="theme_light">밝은테마</string>
+</resources>
