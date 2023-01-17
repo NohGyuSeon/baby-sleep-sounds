@@ -57,6 +57,8 @@
 
     <string name="notificationChannelName">Baby Sleep Sounds Audio Service</string>
 
+    <string name="feedbackNotify">Feedback page</string>
+
     <string name="about">About</string>
     <string name="view">View</string>
     <string name="author">from NGS</string>

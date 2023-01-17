@@ -664,9 +664,9 @@ public class MainActivity extends AppCompatActivity
             displayAboutDialog();
             return true;
         }
-        else if (id == R.id.action_view)
+        else if (id == R.id.action_feedback)
         {
-            startActivity(new Intent(this, SettingsActivity.class));
+            startActivity(new Intent(this, WebActivity.class));
             return true;
         }
 
